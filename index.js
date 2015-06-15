@@ -223,14 +223,6 @@ var GulpWebdriverIO = function(args) {
     };
 
     var endSeleniumSession = function(callback) {
-        if (tunnel) {
-            if(result !== 0) {
-                this.emit('error', new gutil.PluginError('gulp-webdriver', result + ' ' + (result === 1 ? 'test' : 'tests') + ' failed.', {
-                    showStack: false
-                }));
-            }
-        }
-
         if(GLOBAL.browser) {
             // Close Remote sessions if needed
             return GLOBAL.browser.end(function(){
